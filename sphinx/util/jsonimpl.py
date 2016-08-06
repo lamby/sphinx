@@ -25,11 +25,13 @@ class SphinxJSONEncoder(json.JSONEncoder):
 
 def dump(obj, fp, *args, **kwds):
     kwds['cls'] = SphinxJSONEncoder
+    kwds.setdefault('sort_keys', True)
     return json.dump(obj, fp, *args, **kwds)
 
 
 def dumps(obj, *args, **kwds):
     kwds['cls'] = SphinxJSONEncoder
+    kwds.setdefault('sort_keys', True)
     return json.dumps(obj, *args, **kwds)
 
 
